@@ -59,12 +59,12 @@ class Vector() {
     operator fun times(other: Int): Vector {
         val ans = Vector()
         for (i in 0..items.size) {
-            ans[i] = this[i] * other.toFloat()
+            ans[i] = this[i] * other.toDouble()
         }
         return ans
     }
 
-    operator fun times(other: Float): Vector {
+    operator fun times(other: Double): Vector {
         val ans = Vector()
         for (i in 0..items.size) {
             ans[i] = this[i] * other
@@ -76,8 +76,32 @@ class Vector() {
         items = items.map { it * other }.toMutableList()
     }
 
-    operator fun timesAssign(other: Float) {
+    operator fun timesAssign(other: Double) {
         items = items.map { it * other }.toMutableList()
+    }
+
+    operator fun div(other: Int): Vector {
+        val ans = Vector()
+        for (i in 0..items.size) {
+            ans[i] = this[i] / other.toDouble()
+        }
+        return ans
+    }
+
+    operator fun div(other: Double): Vector {
+        val ans = Vector()
+        for (i in 0..items.size) {
+            ans[i] = this[i] / other
+        }
+        return ans
+    }
+
+    operator fun divAssign(other: Int) {
+        items = items.map { it / other }.toMutableList()
+    }
+
+    operator fun divAssign(other: Double) {
+        items = items.map { it / other }.toMutableList()
     }
 
     //endregion
