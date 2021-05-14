@@ -156,7 +156,6 @@ class Matrix() {
             for (i in 1..m.getHeight()) {
                 var subDet = det(m.subMatrix(i))
                 if (i % 2 == 0) subDet *= -1
-                println("det(matrix): $i. row: ${m[i, 1]} * $subDet = ${m[i, 1] * subDet}")
                 sum += (m[i, 1] * subDet)
             }
             return sum
