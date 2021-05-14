@@ -17,9 +17,9 @@ class Matrix() {
     }
 
     constructor(h: Int, w: Int, unit: Double): this(h, w) {
-        val max = if (h < w) h else w
-        for (i in 1..max) {
-            this[i, i] = unit
+        val smallerDimension = if (h < w) h else w
+        for (i in 1..smallerDimension) {
+            set(i, i, unit)
         }
     }
 

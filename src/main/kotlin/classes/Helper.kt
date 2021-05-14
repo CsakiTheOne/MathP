@@ -11,5 +11,11 @@ class Helper {
             }
             return list
         }
+
+        fun printTime(timerName: String = "Runtime", block: () -> Unit) {
+            val start = System.currentTimeMillis()
+            block()
+            println("$timerName: ${System.currentTimeMillis() - start}ms")
+        }
     }
 }

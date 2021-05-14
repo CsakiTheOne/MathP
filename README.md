@@ -13,4 +13,5 @@ Egy projekt a Pannonos tanulmányaimhoz, hogy szerkesztőn belül kóddal tudjak
   - determináns számítás 
 - Gráfok
   - topológiai rendezés
-
+- Egyéb eszközök
+  - futási időt figyelő óra
