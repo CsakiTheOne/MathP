@@ -6,12 +6,14 @@ Egy projekt a Pannonos tanulmányaimhoz, hogy szerkesztőn belül kóddal tudjak
 
 - Vektorok
   - műveletek (+ - * /)
+  - diagonál mátrix létrehozása
 - Mátrixok
   - műveletek (+ - * /)
   - mátrix szorzás
   - transzponálás
-  - determináns számítás 
+  - determináns számítás
 - Gráfok
   - topológiai rendezés
-- Egyéb eszközök
+- Egyéb
+  - bázis transzformációk
   - futási időt figyelő óra

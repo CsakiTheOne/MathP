@@ -39,6 +39,14 @@ class Matrix() {
         elements.map { list.addAll(it.toList()) }
         return list
     }
+    fun getRow(row: Int): List<Double> {
+        return elements[row - 1].toList()
+    }
+    fun getCol(col: Int): List<Double> {
+        val list = mutableListOf<Double>()
+        list.addAll(elements.map { it[col - 1] })
+        return list
+    }
 
     fun isSquare(): Boolean = getWidth() == getHeight()
     fun isDiagonal(): Boolean {
