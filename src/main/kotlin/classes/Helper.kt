@@ -12,6 +12,12 @@ class Helper {
             return list
         }
 
+        fun printWithLength(text: String, length: Int) {
+            for (i in 0 until length) {
+                print (if (i < text.length) text[i] else " ")
+            }
+        }
+
         fun printTime(timerName: String = "Runtime", block: () -> Unit) {
             val start = System.currentTimeMillis()
             block()

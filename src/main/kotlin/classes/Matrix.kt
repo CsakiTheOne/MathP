@@ -8,8 +8,8 @@ class Matrix() {
         this.elements = elements
     }
 
-    constructor(elements: List<List<Double>>): this() {
-        this.elements = elements.map { it.toDoubleArray() }.toTypedArray()
+    constructor(elements: List<List<Number>>): this() {
+        this.elements = elements.map { it.map { num -> num.toDouble() }.toDoubleArray() }.toTypedArray()
     }
 
     constructor(h: Int, w: Int): this() {
@@ -129,7 +129,7 @@ class Matrix() {
         return newMatrix
     }
 
-    fun subMatrix(row: Int): Matrix {
+    fun subMatrixByRow(row: Int): Matrix {
         val sub = Matrix(getHeight() - 1, getWidth() - 1)
         for (x in 1 until getWidth()) {
             for (y in 1..getHeight()) {
@@ -138,6 +138,10 @@ class Matrix() {
             }
         }
         return sub
+    }
+
+    fun toLineString(): String {
+        return elements.joinToString(" | ") { it.joinToString() }
     }
 
     override fun toString(): String {
@@ -149,15 +153,19 @@ class Matrix() {
             if (!m.isSquare()) throw MatrixWrongDimensionException(m)
             // 2x2 size
             if (m.getWidth() == 2) {
-                return m[1, 1] * m[2, 2] - m[1, 2] * m[2, 1]
+                val value = m[1, 1] * m[2, 2] - m[1, 2] * m[2, 1]
+                println("det(${m[1,1]}, ${m[1,2]} | ${m[2,1]}, ${m[2,2]}) = $value")
+                return value
             }
             // Larger size
             var sum = 0.0
             for (i in 1..m.getHeight()) {
-                var subDet = det(m.subMatrix(i))
+                var subDet = det(m.subMatrixByRow(i))
                 if (i % 2 == 0) subDet *= -1
                 sum += (m[i, 1] * subDet)
+                println("det részeredmény: ${m[i, 1]} * $subDet = ${m[i, 1] * subDet}\nÖsszeg eddig: $sum")
             }
+            println("det(${m.toLineString()}) = $sum")
             return sum
         }
     }
