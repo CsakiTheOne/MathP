@@ -30,6 +30,24 @@ class Matrix() {
             }
         }
     }
+
+    constructor(width: Int, vararg values: Double): this() {
+        val rows = mutableListOf<MutableList<Double>>()
+        for (i in values.indices) {
+            if (i % width == 0) rows.add(mutableListOf())
+            rows.last().add(values[i])
+        }
+        elements = rows.map { it.map { num -> num }.toDoubleArray() }.toTypedArray()
+    }
+
+    constructor(width: Int, vararg values: Int): this() {
+        val rows = mutableListOf<MutableList<Double>>()
+        for (i in values.indices) {
+            if (i % width == 0) rows.add(mutableListOf())
+            rows.last().add(values[i].toDouble())
+        }
+        elements = rows.map { it.map { num -> num }.toDoubleArray() }.toTypedArray()
+    }
     //#endregion
 
     fun getWidth(): Int = elements.firstOrNull()?.size ?: 0

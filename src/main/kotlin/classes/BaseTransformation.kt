@@ -28,9 +28,6 @@ class BaseTransformation {
             if (!coords.matches("[0-9],[0-9]".toRegex())) return
             val gy = coords.split(',')[0].toInt()
             val gx = coords.split(',')[1].toInt()
-            // Print table
-            println("Tábla:")
-            printTable(table)
             // Stop if no generator selected
             if (coords == "0,0") {
                 step(table, inBase)
@@ -52,6 +49,9 @@ class BaseTransformation {
                 }
             }
             inBase[gy] = gx
+            // Print table and rank
+            println("Tábla:")
+            printTable(newTable)
             println("Bázisban lévő vektorok: ${inBase.map { "a${it.value} az e${it.key} helyén" }} Rang: ${inBase.size}")
             // Ha van még sor ami nincs a bázisban és van benne 0-tól különböző érték akkor jöhet a következő lépés.
             var hasIncludableVector = false
@@ -66,6 +66,7 @@ class BaseTransformation {
 
         fun start(table: Matrix) {
             println("Bázis transzformálás kezdődött!")
+            printTable(table)
             step(table, mutableMapOf(), true)
         }
     }
