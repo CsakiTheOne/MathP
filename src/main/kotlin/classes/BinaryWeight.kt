@@ -1,14 +1,20 @@
 package classes
 
+import classes.Helper.Companion.printWithLength
+
 class BinaryWeight {
     companion object {
         private val twoPowers = listOf(1, 2, 4, 8, 16, 32, 64)
 
-        fun start(list: List<Int>) {
+        fun start(listFirst: List<Int>, listLast: List<Int>) {
+            val list = mutableListOf<Int>()
+            list.addAll(listFirst)
+            list.addAll(listLast)
             println("Bináris Súly: ${list.sorted()}")
             val col1 = mutableListOf<MutableList<Int>>()
             val col2 = mutableListOf<MutableList<String>>()
             val col3 = mutableListOf<MutableList<String>>()
+            val col2NoTick = mutableListOf<String>()
             // Column 1
             list.sorted().map { n ->
                 val onesCount = n.toString(2).count { it == '1' }
@@ -26,6 +32,7 @@ class BinaryWeight {
                     for (num2 in col1[categoryIndex + 1]) {
                         if (twoPowers.contains(num2 - num1)) {
                             col2[categoryIndex].add("$num1,$num2(${num2 - num1})")
+                            col2NoTick.add("$num1,$num2(${num2 - num1})")
                         }
                     }
                 }
@@ -43,12 +50,33 @@ class BinaryWeight {
                         val x = a2 - a1
                         val y = b1 - a1
                         if (twoPowers.contains(x) && twoPowers.contains(y) && b2 - b1 == a2 - a1 && b1 - a1 == b2 - a2) {
+                            col2NoTick.remove("$a1,$a2(${a2 - a1})")
+                            col2NoTick.remove("$b1,$b2(${b2 - b1})")
                             if (a2 < b1) col3[categoryIndex].add("$a1,$a2,$b1,$b2($x,$y)")
                         }
                     }
                 }
             }
             println("3. oszlop (csoda)\n${col3.joinToString("\n")}")
+            println("2. oszlop nem pipált elemei: $col2NoTick")
+            // Table
+            println("Táblázat")
+            printWithLength("", 20)
+            for (n in listFirst.sorted()) {
+                printWithLength(n.toString(), 3)
+            }
+            println()
+            val tableRows = mutableListOf<String>()
+            tableRows.addAll(col2NoTick)
+            for (category in col3) tableRows.addAll(category)
+            for (row in tableRows) {
+                printWithLength(row, 20)
+                val numbers = row.split('(')[0].split(',').map { it.toInt() }
+                for (n in listFirst) {
+                    printWithLength(if (numbers.contains(n)) "x" else "", 3)
+                }
+                println()
+            }
         }
     }
 }
