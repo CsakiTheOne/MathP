@@ -18,6 +18,16 @@ Egy projekt a Pannonos tanulmányaimhoz, hogy szerkesztőn belül kóddal tudjak
   - bázis transzformációk
   - futási időt figyelő óra
 
+## Előkészítés használathoz
+
+### Környezet
+
+IntelliJ az ajánlott fejlesztői környezet, de bármi tökéletes, ami tud Kotlin-t futtatni. A projektben a Gradle csomagkezelő található, de nem használom még semmire, szóval tényleg elég bármi, ami a Kotlin-t érti.
+
+### Első futtatás
+
+Ha IntelliJ-ben nyitod meg a projektet, első futtatásnál a main.kt fájl megnyitása után a main függvény melletti futtatás gombot kell használni. Ha a gomb még nem jelent meg, meg kell várni a Gradle build és az indexelés végét. Ha az első futtatás megvolt, már az IntelliJ is tudja hogyan kell indítani a projektet, a jobb felső sarokban lévő gombot is lehet használni.
+
 ## Használat
 
 Használd a projektben lévő osztályokat, rajtuk a műveleteket és print-tel ki is írhatod az eredményt.
