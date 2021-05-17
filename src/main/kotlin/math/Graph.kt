@@ -1,7 +1,6 @@
-package classes
+package math
 
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 internal class Graph<T>() {

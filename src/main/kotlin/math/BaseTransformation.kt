@@ -1,6 +1,6 @@
-package classes
+package math
 
-import classes.Helper.Companion.printWithLength
+import other.Helper.Companion.printWithLength
 
 class BaseTransformation {
     companion object {

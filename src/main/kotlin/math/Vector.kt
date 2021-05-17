@@ -1,4 +1,4 @@
-package classes
+package math
 
 class Vector() {
     private var items = mutableListOf<Double>()

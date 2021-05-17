@@ -1,6 +1,6 @@
-package classes
+package other
 
-import classes.Helper.Companion.printWithLength
+import other.Helper.Companion.printWithLength
 
 class BinaryWeight {
     companion object {

@@ -1,4 +1,4 @@
-package classes
+package math
 
 class Matrix() {
     private var elements = arrayOf(doubleArrayOf())

@@ -1,4 +1,4 @@
-package classes
+package other
 
 class Helper {
     companion object {
