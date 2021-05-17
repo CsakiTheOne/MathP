@@ -10,7 +10,7 @@ class BinaryWeight {
             val list = mutableListOf<Int>()
             list.addAll(listFirst)
             list.addAll(listLast)
-            println("Bináris Súly: ${list.sorted()}")
+            println("Bináris Súly: (${listFirst.sorted()})+(${listLast.sorted()})")
             val col1 = mutableListOf<MutableList<Int>>()
             val col2 = mutableListOf<MutableList<String>>()
             val col3 = mutableListOf<MutableList<String>>()
