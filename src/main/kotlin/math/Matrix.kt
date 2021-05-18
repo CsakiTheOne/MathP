@@ -1,21 +1,35 @@
 package math
 
+import other.Helper.Companion.printWithLength
+
 class Matrix() {
     private var elements = arrayOf(doubleArrayOf())
 
     //#region Constructors
+    /**
+     * Mátrix létrehozása tömbökkel.
+     */
     constructor(elements: Array<DoubleArray>): this() {
         this.elements = elements
     }
 
+    /**
+     * Mátrix létrhozása listákkal.
+     */
     constructor(elements: List<List<Number>>): this() {
         this.elements = elements.map { it.map { num -> num.toDouble() }.toDoubleArray() }.toTypedArray()
     }
 
+    /**
+     * Egy h * w méretű mátrix, aminek minden eleme 0 lesz.
+     */
     constructor(h: Int, w: Int): this() {
         elements = Array(h) { DoubleArray(w) { 0.0 } }
     }
 
+    /**
+     * Egy h * w méretű diagonálmátrix, ahol a főátló elemei unit értéke.
+     */
     constructor(h: Int, w: Int, unit: Double): this(h, w) {
         val smallerDimension = if (h < w) h else w
         for (i in 1..smallerDimension) {
@@ -23,6 +37,11 @@ class Matrix() {
         }
     }
 
+    /**
+     * Egy h * w méretű mátrix, aminek az értékei egy függvénytől függnek.
+     * Pl. Matrix(3, 5) { y, x -> (x + y).toDouble() }
+     * A példában egy 3 * 5 méretű mátrix van, aminek minden eleme a koordináták összege.
+     */
     constructor(h: Int, w: Int, f: (y: Int, x: Int) -> Double): this(h, w) {
         for (y in 1..getHeight()) {
             for (x in 1..getWidth()) {
@@ -31,6 +50,9 @@ class Matrix() {
         }
     }
 
+    /**
+     * Mátrix létrehozása a szélesség és az elemek megadásával.
+     */
     constructor(width: Int, vararg values: Double): this() {
         val rows = mutableListOf<MutableList<Double>>()
         for (i in values.indices) {
@@ -40,6 +62,9 @@ class Matrix() {
         elements = rows.map { it.map { num -> num }.toDoubleArray() }.toTypedArray()
     }
 
+    /**
+     * Mátrix létrehozása a szélesség és az elemek megadásával.
+     */
     constructor(width: Int, vararg values: Int): this() {
         val rows = mutableListOf<MutableList<Double>>()
         for (i in values.indices) {
@@ -52,6 +77,10 @@ class Matrix() {
 
     fun getWidth(): Int = elements.firstOrNull()?.size ?: 0
     fun getHeight(): Int = elements.size
+
+    /**
+     * A mátrix összes eleme egyetlen listában.
+     */
     fun getValuesList(): List<Double> {
         val list = mutableListOf<Double>()
         elements.map { list.addAll(it.toList()) }
@@ -133,6 +162,7 @@ class Matrix() {
 
     operator fun times(other: Matrix): Matrix {
         if (getWidth() != other.getHeight()) throw MatrixWrongDimensionException(this, other)
+        println("Mátrixok szorzása...")
         val newMatrix = Matrix(getHeight(), other.getWidth())
         for (i in 1..getHeight()) {
             for (j in 1..other.getWidth()) {
@@ -141,6 +171,26 @@ class Matrix() {
                 }
             }
         }
+        for (y in 1..other.getHeight()) {
+            printWithLength("", 6 * getWidth())
+            for (x in 1..other.getWidth()) {
+                printWithLength(other[y, x].toString(), 6)
+            }
+            println()
+        }
+        printWithLength("", 6 * getWidth())
+        println("-".repeat(6 * other.getWidth()))
+        for (y in 1..getHeight()) {
+            for (x in 1..getWidth()) {
+                printWithLength(get(y, x).toString(), 6)
+            }
+            print("|")
+            for (x in 1..newMatrix.getWidth()) {
+                printWithLength(newMatrix[y, x].toString(), 6)
+            }
+            println()
+        }
+        println("Szorzás kész")
         return newMatrix
     }
     //#endregion
