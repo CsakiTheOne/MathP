@@ -246,7 +246,7 @@ class Matrix() {
     }
 
     override fun equals(other: Any?): Boolean {
-        return other is Matrix && other.elements.contentEquals(elements)
+        return other is Matrix && other.getValuesList() == getValuesList()
     }
 
     companion object {
