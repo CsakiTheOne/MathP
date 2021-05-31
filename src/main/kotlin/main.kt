@@ -1,10 +1,8 @@
-import math.Matrix
+import math.SimpleOperations.Companion.writtenDivide
 
-fun main(args: Array<String>) {
-    val m1 = Matrix(3,
-    3, 1, 2,
-    2, 3, 1)
-    val m2 = Matrix(3, 2) { y, x -> (x + y).toDouble() }
+fun main() {
 
-    m1 * m2
+    1062 writtenDivide 9
+
 }
+
