@@ -1,8 +1,6 @@
-import math.SimpleOperations.Companion.writtenDivide
+import math.BaseTransformation
+import math.Matrix
 
-fun main() {
-
-    1062 writtenDivide 9
+fun main(args: Array<String>) {
 
 }
-

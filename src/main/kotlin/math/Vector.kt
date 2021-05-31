@@ -30,35 +30,35 @@ class Vector() {
 
     operator fun plus(other: Vector): Vector {
         val ans = Vector()
-        for (i in 0..items.size) {
+        for (i in 0 until items.size) {
             ans[i] = this[i] + other[i]
         }
         return ans
     }
 
     operator fun plusAssign(other: Vector) {
-        for (i in 0..items.size) {
+        for (i in 0 until items.size) {
             this[i] += other[i]
         }
     }
 
     operator fun minus(other: Vector): Vector {
         val ans = Vector()
-        for (i in 0..items.size) {
+        for (i in 0 until items.size) {
             ans[i] = this[i] - other[i]
         }
         return ans
     }
 
     operator fun minusAssign(other: Vector) {
-        for (i in 0..items.size) {
+        for (i in 0 until items.size) {
             this[i] -= other[i]
         }
     }
 
     operator fun times(other: Int): Vector {
         val ans = Vector()
-        for (i in 0..items.size) {
+        for (i in 0 until items.size) {
             ans[i] = this[i] * other.toDouble()
         }
         return ans
@@ -66,7 +66,7 @@ class Vector() {
 
     operator fun times(other: Double): Vector {
         val ans = Vector()
-        for (i in 0..items.size) {
+        for (i in 0 until items.size) {
             ans[i] = this[i] * other
         }
         return ans
@@ -82,7 +82,7 @@ class Vector() {
 
     operator fun div(other: Int): Vector {
         val ans = Vector()
-        for (i in 0..items.size) {
+        for (i in 0 until items.size) {
             ans[i] = this[i] / other.toDouble()
         }
         return ans
@@ -90,7 +90,7 @@ class Vector() {
 
     operator fun div(other: Double): Vector {
         val ans = Vector()
-        for (i in 0..items.size) {
+        for (i in 0 until items.size) {
             ans[i] = this[i] / other
         }
         return ans
@@ -108,7 +108,7 @@ class Vector() {
 
     fun isNullVector(): Boolean = !items.any { it != 0.0 }
 
-    fun isUnitVector(): Boolean = items.contains(1f) && items.count { it == 0.0 } == items.size - 1
+    fun isUnitVector(): Boolean = items.contains(1.0) && items.count { it == 0.0 } == items.size - 1
 
     fun getDimension(): Int = items.size
 
