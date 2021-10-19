@@ -13,7 +13,10 @@ repositories {
 }
 
 dependencies {
-    implementation("org.junit.jupiter:junit-jupiter:5.7.0")
+    implementation("org.junit.jupiter:junit-jupiter:5.8.0")
+    implementation("com.google.code.gson:gson:2.8.8")
+    implementation("mysql:mysql-connector-java:8.0.25")
+    implementation("com.microsoft.sqlserver:mssql-jdbc:9.4.0.jre16")
     testImplementation(kotlin("test-junit"))
 }
 
